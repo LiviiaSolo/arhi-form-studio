@@ -48,7 +48,7 @@
 
         <a class="header__phone" href="tel:+380682554585"> 
           <img src="images/phone.svg" alt="phone icon"> 
-          <span>+00 (000) 000 00 00</span> 
+          <span>+xx (xxx) xxx xx xx</span> 
         </a>
       </div>
       <h1 class="section  header__title">
@@ -58,7 +58,10 @@
       <p class="section header__text">
         We create innovative and aesthetically refined spaces, <br>where comfort and functionality merge with contemporary design.
       </p>
-      <a class="header__btn" href="#">Submit a request</a>
+
+      <button class="header__btn open-request-modal">
+        Submit a request
+      </button>
     </div>
   </header>
 
@@ -106,7 +109,10 @@
                   Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
                   Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                 </p>
-                <a class="projects__item-link" href="#">more</a>
+
+                <button class="projects__item-link" type="button">
+                  More
+                </button>
             </div>
         </div>
 
@@ -121,7 +127,9 @@
                 Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
               </p>
-              <a class="projects__item-link" href="#">more</a>
+              <button class="projects__item-link" type="button">
+                More
+              </button>
           </div>
         </div>
 
@@ -136,7 +144,9 @@
                   Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                   Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                 </p>
-                <a class="projects__item-link" href="#">more</a>
+                <button class="projects__item-link" type="button">
+                  More
+                </button>
           </div>
         </div>
         <div class="swiper-slide">
@@ -150,7 +160,9 @@
                   Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                   Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                 </p>
-                <a class="projects__item-link" href="#">more</a>
+                <button class="projects__item-link" type="button">
+                  More
+                </button>
             </div>
         </div>
         <div class="swiper-slide">
@@ -164,7 +176,9 @@
                 Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
               </p>
-              <a class="projects__item-link" href="#">more</a>
+              <button class="projects__item-link" type="button">
+                More
+              </button>
           </div>
         </div>
       </div>
@@ -254,7 +268,9 @@
               <input class="catalog__form-checkbox" type="checkbox">
               I agree to the processing of personal data
             </label>
-          <button class="catalog__form-btn" type="submit">Get the catalog</button>
+          <button class="catalog__form-btn" type="button" id="openCatalogModal">
+            Get the catalog
+          </button>
         </form>      
       </div>
         <div class="section gallery">
@@ -280,7 +296,9 @@
           </h2>
         <form class="section request__form" action=""> 
           <input class="request__form-input" type="email" placeholder="Enter your email">
-          <button class="request__form-btn" type="submit">Submit a request</button>
+          <button class="request__form-btn open-request-modal" type="button">
+            Submit a request
+          </button>
         </form>
         </div>
       </div>
@@ -363,20 +381,20 @@
             <li class="footer__contacts-item">
               <a class="footer__contacts-link " href="#">
                 <img class="footer__contacts-map" src="images/map.svg" alt="">
-                <span>Kyiv, 14 <br>
+                <span>Kyiv <br>
                       Vesela Street</span>
               </a>
               </li>
               <li class="footer__contacts-item">
               <a class="footer__contacts-link" href="tel:+380682554585">
                 <img src="images/phone.svg" alt="">
-                +00 (000) 000 00 00
+                +xx (xxx) xxx xx xx
               </a>
             </li>
             <li class="footer__contacts-time">
               Working hours: <br>
               Mon–Fri <br>
-              from 9:00 до 17:00
+              from 9:00 to 17:00
             </li>
           </ul>
         </div>
@@ -387,6 +405,140 @@
       </p>
     </div>
   </footer>
+
+  <!-- ================= MODALS ================= -->
+
+  <!-- Modal hero -->
+  <div class="modal" id="requestModal">
+      <div class="modal__content">
+          <button class="modal__close" id="closeModal">
+             ×
+          </button>
+
+          <p class="modal__subtitle">
+              Architecture & Design
+          </p>
+
+          <h2 class="modal__title">
+              Start your project with us
+          </h2>
+
+          <p class="modal__description">
+              Tell us about your ideas, and our architects will contact you to create a unique and functional space.
+          </p>
+
+          <form class="modal__form">
+              <input type="text" placeholder="Your name" required>
+              <input type="email" placeholder="Email address" required>
+              <input type="tel" placeholder="Phone number">
+              <textarea placeholder="Describe your project"></textarea>
+
+              <button class="modal__submit">
+                  Submit a request
+              </button>
+          </form>
+      </div>
+  </div>
+
+  <!-- Modal-catalog -->
+  <div class="modal modal-catalog" id="catalogModal">
+
+    <div class="modal__content catalog-modal__content">
+
+    <button 
+      class="modal__close catalog-modal__close"
+      id="closeCatalogModal">
+       ×
+    </button>
+
+      <p class="modal__subtitle">
+        Interior Collection
+      </p>
+
+      <h2 class="modal__title">
+        Get our project catalog
+      </h2>
+
+      <p class="modal__description">
+        Leave your email and receive a selection of our best architectural and interior solutions.
+      </p>
+
+      <form class="catalog-modal__form">
+
+        <input 
+          type="email" 
+          placeholder="Enter your email"
+          required
+        >
+
+        <label class="catalog-modal__label">
+          <input type="checkbox" required>
+          I agree to the processing of personal data
+        </label>
+
+        <button class="modal__submit">
+          Receive catalog
+        </button>
+
+      </form>
+
+    </div>
+
+  </div>
+
+
+  <!-- Modal-projects -->
+  <div class="modal" id="projectModal">
+
+  <div class="modal__content project-modal">
+
+    <button class="modal__close project-modal__close" id="closeProjectModal">
+      ×
+    </button>
+
+    <img 
+      class="project-modal__img" 
+      src="" 
+      alt=""
+    >
+
+    <div class="project-modal__body">
+
+      <p class="modal__subtitle">
+        Project presentation
+      </p>
+
+      <h2 class="project-modal__title">
+        Project name
+      </h2>
+
+      <p class="modal__description">
+        Leave your email and receive the complete project presentation, 
+        including floor plans, design solutions and architectural details.
+      </p>
+
+      <form class="project-modal__form">
+
+        <input 
+          type="email" 
+          placeholder="Enter your email"
+          required
+        >
+
+        <button class="modal__submit">
+          Get project
+        </button>
+
+      </form>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+  <!-- =============== END MODALS =============== -->
 
   <!-- Swiper JS -->
   <script src="js/swiper-bundle.min.js" defer></script>

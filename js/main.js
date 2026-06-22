@@ -73,3 +73,158 @@ const sectionObserver = new IntersectionObserver(
 );
 
 animatedSections.forEach((section) => sectionObserver.observe(section));
+
+
+
+// ----------------
+// Submit a request
+
+const requestButtons = document.querySelectorAll(".open-request-modal");
+const requestModal = document.getElementById("requestModal");
+const closeRequestBtn = document.getElementById("closeModal");
+
+
+// Open modal from any button
+requestButtons.forEach(button => {
+    button.addEventListener("click", () => {
+        requestModal.classList.add("active");
+        document.body.style.overflow = "hidden";
+    });
+});
+
+
+// Close by button ×
+closeRequestBtn.addEventListener("click", closeRequestModal);
+
+
+// Close on click on background
+requestModal.addEventListener("click", (e) => {
+    if (e.target === requestModal) {
+        closeRequestModal();
+    }
+});
+
+
+// Close by pressing Esc key
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+        closeRequestModal();
+    }
+});
+
+
+// Function for closing the modal
+function closeRequestModal() {
+    requestModal.classList.remove("active");
+
+    // unblock the scroll only if there are no other open modals
+    if (!document.querySelector(".modal.active")) {
+        document.body.style.overflow = "";
+    }
+}
+
+// --------------
+// Catalog-modal
+const openCatalogBtn = document.getElementById("openCatalogModal");
+const closeCatalogBtn = document.getElementById("closeCatalogModal");
+const catalogModal = document.getElementById("catalogModal");
+
+
+openCatalogBtn.addEventListener("click", () => {
+  catalogModal.classList.add("active");
+  document.body.style.overflow = "hidden";
+});
+
+
+closeCatalogBtn.addEventListener("click", () => {
+  closeCatalog();
+});
+
+
+catalogModal.addEventListener("click", (e) => {
+  if (e.target === catalogModal) {
+    closeCatalog();
+  }
+});
+
+
+function closeCatalog() {
+  catalogModal.classList.remove("active");
+
+  if (!document.querySelector(".modal.active")) {
+    document.body.style.overflow = "";
+  }
+}
+
+
+// Modal-projects
+const projectLinks = document.querySelectorAll(".projects__item-link");
+
+const projectModal = document.getElementById("projectModal");
+const closeProjectBtn = document.getElementById("closeProjectModal");
+
+const projectImage = document.querySelector(".project-modal__img");
+const projectTitle = document.querySelector(".project-modal__title");
+
+
+// Opening a modal window
+projectLinks.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        const card = button.closest(".projects__item");
+
+        const img = card.querySelector("img");
+        const title = card.querySelector(".projects__item-title");
+
+
+        // We put data from the card
+        projectImage.src = img.src;
+        projectImage.alt = img.alt;
+
+        projectTitle.textContent = title.textContent;
+
+
+        projectModal.classList.add("active");
+        document.body.style.overflow = "hidden";
+
+    });
+
+});
+
+
+// Closing the cross
+closeProjectBtn.addEventListener("click", closeProjectModal);
+
+
+// Background closure
+projectModal.addEventListener("click", (e) => {
+
+    if (e.target === projectModal) {
+        closeProjectModal();
+    }
+
+});
+
+
+// ESC
+document.addEventListener("keydown", (e) => {
+
+    if (e.key === "Escape") {
+        closeProjectModal();
+    }
+
+});
+
+
+// Closing function
+function closeProjectModal() {
+
+    projectModal.classList.remove("active");
+
+
+    if (!document.querySelector(".modal.active")) {
+        document.body.style.overflow = "";
+    }
+
+}
