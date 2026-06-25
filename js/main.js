@@ -115,13 +115,15 @@ document.addEventListener("keydown", (e) => {
 
 // Function for closing the modal
 function closeRequestModal() {
-    requestModal.classList.remove("active");
 
-    // unblock the scroll only if there are no other open modals
+    requestModal.classList.remove("active");
+    resetModal(requestModal);
+
     if (!document.querySelector(".modal.active")) {
         document.body.style.overflow = "";
     }
 }
+
 
 // --------------
 // Catalog-modal
@@ -149,7 +151,9 @@ catalogModal.addEventListener("click", (e) => {
 
 
 function closeCatalog() {
+
   catalogModal.classList.remove("active");
+  resetModal(catalogModal);
 
   if (!document.querySelector(".modal.active")) {
     document.body.style.overflow = "";
@@ -221,10 +225,46 @@ document.addEventListener("keydown", (e) => {
 function closeProjectModal() {
 
     projectModal.classList.remove("active");
-
+    resetModal(projectModal);
 
     if (!document.querySelector(".modal.active")) {
         document.body.style.overflow = "";
     }
+}
 
+
+// --------------------
+const forms = document.querySelectorAll(".modal-form");
+
+forms.forEach(form => {
+  form.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const modal = this.closest(".modal__content");
+
+    // hide the form
+    this.style.display = "none";
+
+    // showing a message
+    const success = modal.querySelector(".modal__success");
+    success.classList.add("active");
+  });
+});
+
+
+// Reset modal forms and success messages
+function resetModal(modal) {
+
+    const forms = modal.querySelectorAll(".modal-form");
+
+    forms.forEach(form => {
+    form.style.display = "";
+    form.reset();
+});
+
+    const successMessages = modal.querySelectorAll(".modal__success");
+
+    successMessages.forEach(success => {
+        success.classList.remove("active");
+    });
 }
